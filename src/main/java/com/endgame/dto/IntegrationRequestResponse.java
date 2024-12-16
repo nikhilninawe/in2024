@@ -9,4 +9,6 @@ public class IntegrationRequestResponse {
     public String requestPayload;
     public String responseCode;
     public String responsePayload;
+    public long timestamp;
+
 }

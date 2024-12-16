@@ -17,3 +17,5 @@ buildNumber.properties
 .classpath
 mvnw
 mvnw.cmd
+.idea/
+.mvn/

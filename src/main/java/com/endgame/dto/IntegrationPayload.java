@@ -2,9 +2,7 @@ package com.endgame.dto;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.List;
-
-public class IntegrationRequest {
+public class IntegrationPayload {
     @Id
     public String id;
 
@@ -14,7 +12,6 @@ public class IntegrationRequest {
     public String context;
     public String method;
     public String nonce;
-    public String payload;
-    public List<String> errors;
-    public List<IntegrationRequestResponse> integrationRequestResponses;
+    public String payload;  // incoming_payload, error, outgoing_requests, outgoing_response
+    public int responseCode;
 }
