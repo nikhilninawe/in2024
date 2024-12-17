@@ -1,23 +1,22 @@
 package com.endgame.controller;
 
 import com.endgame.dto.IntegrationPayload;
-import com.endgame.dto.IntegrationRequestResponse;
 import com.endgame.repository.IntegrationRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.PostConstruct;
+import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:4200", "https://9406-2405-201-301d-e85d-6912-a330-d924-84f9.ngrok-free.app/",
+                        "https://stage-swift.turvo.net/"})
 public class IntegrationDebugController {
     private final IntegrationRequestRepository repository;
 
@@ -32,7 +31,7 @@ public class IntegrationDebugController {
         request.businessId = 109;
         request.context = "SHIPMENT";
         request.method = "POST";
-        request.timestamp = 1734080330389L;
+        request.timestamp = new Date();
         request.userId = 9687;
         request.nonce = "f190075a-9476-47e4-89fc-26dab1715d70";
         request.payload = "{\"id\":87049652,\"_operation\":1,\"globalRoute\":[{\"id\":210255621,\"segmentSequence\":0,\"sequence\":0,\"appointment\":{\"date\":\"2024-12-13T14:00:00Z\",\"timeZone\":\"America/New_York\",\"flex\":1062000,\"hasTime\":true},\"deleted\":false,\"_operation\":1},{\"id\":210255622,\"segmentSequence\":0,\"sequence\":1,\"appointment\":{\"date\":\"2024-12-14T14:00:00Z\",\"timeZone\":\"America/New_York\",\"flex\":1062000,\"hasTime\":true},\"deleted\":false,\"_operation\":1}],\"use_routing_guide\":false,\"shipmentCheckId\":0}".replace("\"", "");;
