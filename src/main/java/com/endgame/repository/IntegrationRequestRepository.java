@@ -9,4 +9,5 @@ public interface IntegrationRequestRepository extends MongoRepository<Integratio
     List<IntegrationPayload> findByBusinessId(long businessId);
     List<IntegrationPayload> findByTimestampBetweenAndBusinessId(long start, long end, long businessId);
     List<IntegrationPayload> findByNonce(String nonce);
+    List<IntegrationPayload> findByNonceOrEntityId(String nonce, String entityId);
 }

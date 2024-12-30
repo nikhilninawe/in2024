@@ -16,6 +16,7 @@ public class IntegrationPayload {
     public String context;
     public String method;
     public String nonce;
+    public String entityId;
     public String payload;  // incoming_payload, error, outgoing_requests, outgoing_response
     public int responseCode = 200;
 }

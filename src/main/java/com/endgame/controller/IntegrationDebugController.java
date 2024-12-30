@@ -52,7 +52,7 @@ public class IntegrationDebugController {
 
     @GetMapping("/integration_request_by_nonce")
     public List<IntegrationPayload> getIntegrationRequestByNonce(@RequestParam(value = "nonce") String nonce) {
-        return repository.findByNonce(nonce);
+        return repository.findByNonceOrEntityId(nonce, nonce);
     }
 
     @PostMapping("/integration_request")
