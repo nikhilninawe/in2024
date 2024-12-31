@@ -2,6 +2,7 @@ package com.endgame.controller;
 
 import com.endgame.dto.IntegrationPayload;
 import com.endgame.repository.IntegrationRequestRepository;
+import com.endgame.service.Request360Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +18,14 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200", "https://9406-2405-201-301d-e85d-6912-a330-d924-84f9.ngrok-free.app/",
                         "https://stage-swift.turvo.net/"})
-public class IntegrationDebugController {
+public class Request360Controller {
     private final IntegrationRequestRepository repository;
+    private final Request360Service service;
 
-    public IntegrationDebugController(@Autowired IntegrationRequestRepository requestRepository) {
+    public Request360Controller(@Autowired IntegrationRequestRepository requestRepository,
+                                @Autowired Request360Service service) {
         this.repository = requestRepository;
+        this.service = service;
     }
 
 //    @PostConstruct
@@ -52,7 +56,7 @@ public class IntegrationDebugController {
 
     @GetMapping("/integration_request_by_nonce")
     public List<IntegrationPayload> getIntegrationRequestByNonce(@RequestParam(value = "nonce") String nonce) {
-        return repository.findByNonceOrEntityId(nonce, nonce);
+        return service.getIntegrationRequest(nonce);
     }
 
     @PostMapping("/integration_request")
