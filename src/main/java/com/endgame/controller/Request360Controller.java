@@ -1,6 +1,7 @@
 package com.endgame.controller;
 
 import com.endgame.dto.IntegrationPayload;
+import com.endgame.dto.LogMessage;
 import com.endgame.repository.IntegrationRequestRepository;
 import com.endgame.service.Request360Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +56,15 @@ public class Request360Controller {
     }
 
     @GetMapping("/integration_request_by_nonce")
-    public List<IntegrationPayload> getIntegrationRequestByNonce(@RequestParam(value = "nonce") String nonce) {
-        return service.getIntegrationRequest(nonce);
+    public List<IntegrationPayload> getIntegrationRequestByNonce(@RequestParam(value = "nonce") String nonce,
+                                                                 @RequestParam String environment) {
+        return service.getIntegrationRequest(nonce, environment);
+    }
+
+    @GetMapping("/request_by_businessId")
+    public List<IntegrationPayload> getIntegrationRequestByBusinessId(@RequestParam int businessId,
+                                                                      @RequestParam String environment) {
+        return service.getIntegrationRequestByBusinessId(businessId, environment);
     }
 
     @PostMapping("/integration_request")
